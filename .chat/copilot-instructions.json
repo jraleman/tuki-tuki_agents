@@ -1,0 +1,455 @@
+{
+  "requesterUsername": "eva-raisga",
+  "requesterAvatarIconUri": {
+    "$mid": 1,
+    "path": "/u/207229053",
+    "scheme": "https",
+    "authority": "avatars.githubusercontent.com",
+    "query": "v=4"
+  },
+  "responderUsername": "GitHub Copilot",
+  "responderAvatarIconUri": {
+    "id": "copilot"
+  },
+  "initialLocation": "panel",
+  "requests": [
+    {
+      "requestId": "request_f0c2681b-4c24-4d8c-a130-a56e9aad9256",
+      "message": {
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 126
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 127
+            },
+            "text": "Create copilot instructions to be used for the creation of a Dance Dance Revolution (DDR) type of game using ThreeJS and React",
+            "kind": "text"
+          }
+        ],
+        "text": "Create copilot instructions to be used for the creation of a Dance Dance Revolution (DDR) type of game using ThreeJS and React"
+      },
+      "variableData": {
+        "variables": [
+          {
+            "kind": "file",
+            "id": "vscode.implicit.viewport",
+            "name": "file:copilot-instructions.md",
+            "value": {
+              "uri": {
+                "$mid": 1,
+                "fsPath": "/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+                "external": "file:///Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+                "path": "/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+                "scheme": "file"
+              },
+              "range": {
+                "startLineNumber": 1,
+                "startColumn": 1,
+                "endLineNumber": 1,
+                "endColumn": 1
+              }
+            },
+            "modelDescription": "User's current visible code"
+          }
+        ]
+      },
+      "response": [
+        {
+          "value": "I'll create comprehensive Copilot instructions for building a Dance Dance Revolution (DDR) type game using ThreeJS and React. Let me first read the current content of the copilot instructions file and then create detailed instructions. ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/Users/rais/Desktop/tuki-tuki/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "prepareToolInvocation",
+          "toolName": "copilot_readFile"
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "invocationMessage": {
+            "value": "Reading [](file:///Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md#1-1), lines 1 to 1",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "file:///Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md#1-1": {
+                "$mid": 1,
+                "path": "/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+                "scheme": "file",
+                "fragment": "1-1"
+              }
+            }
+          },
+          "pastTenseMessage": {
+            "value": "Read [](file:///Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md#1-1), lines 1 to 1",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "uris": {
+              "file:///Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md#1-1": {
+                "$mid": 1,
+                "path": "/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+                "scheme": "file",
+                "fragment": "1-1"
+              }
+            }
+          },
+          "isConfirmed": true,
+          "isComplete": true,
+          "toolCallId": "6319296a-bdaf-495d-a10b-b6b6fbc8acad",
+          "toolId": "copilot_readFile"
+        },
+        {
+          "value": "Now I'll create comprehensive Copilot instructions for building a DDR-style game using ThreeJS and React: ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/Users/rais/Desktop/tuki-tuki/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "prepareToolInvocation",
+          "toolName": "copilot_replaceString"
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "presentation": "hidden",
+          "invocationMessage": "Using \"Replace String in File\"",
+          "isConfirmed": true,
+          "isComplete": true,
+          "toolCallId": "15df1a46-76ca-4cc4-8dcf-ffbc69d2a987",
+          "toolId": "copilot_replaceString"
+        },
+        {
+          "value": "Let me insert the content into the empty file: ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/Users/rais/Desktop/tuki-tuki/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "prepareToolInvocation",
+          "toolName": "copilot_insertEdit"
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "presentation": "hidden",
+          "invocationMessage": "Using \"Edit File\"",
+          "isConfirmed": true,
+          "isComplete": true,
+          "toolCallId": "731a6218-5d49-494b-9103-4c7d2195fd4d",
+          "toolId": "copilot_insertEdit"
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "presentation": "hidden",
+          "invocationMessage": "Using \"\"",
+          "isConfirmed": true,
+          "isComplete": true,
+          "toolCallId": "ccf08833-0574-49b9-b7de-d6cf47294fe6",
+          "toolId": "vscode_editFile_internal"
+        },
+        {
+          "value": "\n````\n",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        },
+        {
+          "id": "26359ad7-ad74-4489-9afd-71ec909fbeb4",
+          "kind": "undoStop"
+        },
+        {
+          "kind": "codeblockUri",
+          "uri": {
+            "$mid": 1,
+            "fsPath": "/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+            "external": "file:///Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+            "path": "/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+            "scheme": "file"
+          },
+          "isEdit": true
+        },
+        {
+          "value": "\n````\n",
+          "isTrusted": false,
+          "supportThemeIcons": false,
+          "supportHtml": false
+        },
+        {
+          "kind": "textEditGroup",
+          "uri": {
+            "$mid": 1,
+            "fsPath": "/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+            "external": "file:///Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+            "path": "/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+            "scheme": "file"
+          },
+          "edits": [
+            [],
+            [
+              {
+                "text": "# Copilot Instructions for DDR Game Development\n\n## Project Overview\nYou are helping to build a Dance Dance Revolution (DDR) style rhythm game called \"Tuki-Tuki\" using React and ThreeJS. This is a web-based rhythm game where players step on arrow keys in time with music.\n\n## Tech Stack\n- **Frontend Framework**: React 18+ with TypeScript\n- **3D Graphics**: ThreeJS (Three.js) with React Three Fiber (@react-three/fiber)\n- **Audio**: Web Audio API or Howler.js for precise audio timing\n- **Styling**: CSS Modules or Styled Components for component styling\n- **State Management**: React Context API or Zustand for game state\n- **Build Tool**: Vite for development and building\n- **Input Handling**: Keyboard events for arrow key detection\n\n## Core Game Components\n\n### 1. Game Engine Architecture\n- **GameEngine**: Core game loop with requestAnimationFrame\n- **AudioManager**: Handles music playback and timing synchronization\n- **ScoreManager**: Tracks player performance and combo system\n- **InputManager**: Handles keyboard input with precise timing\n- **BeatMapLoader**: Loads and parses song charts/beatmaps\n\n### 2. 3D Scene Components (ThreeJS)\n- **GameStage**: Main 3D scene container\n- **ArrowLane**: 3D lanes where arrows travel (4 lanes: left, down, up, right)\n- **FallingArrows**: 3D arrow objects that move towards the player\n- **HitZone**: Target area where players must hit arrows\n- **ParticleEffects**: Visual feedback for successful hits\n- **Background**: Animated 3D background elements\n\n### 3. UI Components (React)\n- **GameScreen**: Main gameplay interface\n- **ScoreDisplay**: Shows current score, combo, and accuracy\n- **SongSelector**: Menu for choosing songs\n- **SettingsPanel**: Game configuration (speed, difficulty, key bindings)\n- **ResultsScreen**: Post-game statistics and scoring\n\n## Key Features to Implement\n\n### Core Gameplay\n- **Arrow Patterns**: Different arrow combinations based on difficulty\n- **Timing System**: Perfect/Great/Good/Miss hit detection with timing windows\n- **Combo System**: Consecutive hits increase score multiplier\n- **Difficulty Levels**: Beginner, Standard, Heavy, Challenge\n- **Speed Modifiers**: Adjustable arrow scroll speed\n\n### Audio Integration\n- **Beat Detection**: Sync arrow timing with music beats\n- **Audio Offset**: User-adjustable audio synchronization\n- **Sound Effects**: Hit sounds, miss sounds, menu sounds\n- **Music Formats**: Support for MP3, OGG, WAV files\n\n### Visual Features\n- **3D Arrow Models**: Colorful 3D arrows with materials and lighting\n- **Lane Highlighting**: Visual feedback when arrows are in hit zone\n- **Particle Systems**: Explosions, trails, and hit effects\n- **Dynamic Lighting**: Responsive to music and gameplay\n- **Smooth Animations**: Interpolated movement and transitions\n\n## File Structure Guidelines\n\n```\nsrc/\n├── components/\n│   ├── game/\n│   │   ├── GameEngine.tsx\n│   │   ├── GameScreen.tsx\n│   │   ├── ScoreDisplay.tsx\n│   │   └── InputHandler.tsx\n│   ├── three/\n│   │   ├── GameStage.tsx\n│   │   ├── ArrowLane.tsx\n│   │   ├── FallingArrow.tsx\n│   │   └── ParticleEffects.tsx\n│   └── ui/\n│       ├── SongSelector.tsx\n│       ├── SettingsPanel.tsx\n│       └── ResultsScreen.tsx\n├── hooks/\n│   ├── useGameEngine.ts\n│   ├── useAudioManager.ts\n│   └── useKeyboardInput.ts\n├── managers/\n│   ├── AudioManager.ts\n│   ├── ScoreManager.ts\n│   └── BeatMapLoader.ts\n├── types/\n│   ├── GameTypes.ts\n│   ├── BeatMap.ts\n│   └── Score.ts\n├── assets/\n│   ├── songs/\n│   ├── models/\n│   └── textures/\n└── utils/\n    ├── timing.ts\n    ├── math.ts\n    └── audio.ts\n```\n\n## Development Guidelines\n\n### Performance Optimization\n- Use `useMemo` and `useCallback` for expensive computations\n- Implement object pooling for arrows to reduce garbage collection\n- Optimize ThreeJS renders with `useFrame` from React Three Fiber\n- Use `React.memo` for components that don't need frequent re-renders\n- Implement frustum culling for off-screen arrows\n\n### Timing Precision\n- Use `performance.now()` for high-precision timing\n- Implement audio lookahead for consistent timing\n- Account for display refresh rate and audio latency\n- Use Web Audio API for sample-accurate timing\n- Implement calibration system for user-specific timing offsets\n\n### Code Quality\n- Use TypeScript for type safety\n- Implement proper error handling for audio loading\n- Use consistent naming conventions (camelCase for variables, PascalCase for components)\n- Add comprehensive JSDoc comments for complex functions\n- Follow React best practices (hooks, context, etc.)\n\n### Testing Considerations\n- Unit tests for game logic (scoring, timing, input handling)\n- Integration tests for audio synchronization\n- Performance tests for 3D rendering\n- User acceptance tests for gameplay feel\n\n## Key Algorithms to Implement\n\n### 1. Hit Detection\n```typescript\n// Timing window constants (in milliseconds)\nconst PERFECT_WINDOW = 22;\nconst GREAT_WINDOW = 64;\nconst GOOD_WINDOW = 106;\n\nfunction evaluateHit(arrowTime: number, hitTime: number): HitResult {\n  const timeDiff = Math.abs(hitTime - arrowTime);\n  if (timeDiff <= PERFECT_WINDOW) return 'PERFECT';\n  if (timeDiff <= GREAT_WINDOW) return 'GREAT';\n  if (timeDiff <= GOOD_WINDOW) return 'GOOD';\n  return 'MISS';\n}\n```\n\n### 2. Score Calculation\n```typescript\nfunction calculateScore(hitResult: HitResult, combo: number): number {\n  const baseScore = {\n    PERFECT: 100,\n    GREAT: 80,\n    GOOD: 60,\n    MISS: 0\n  };\n  \n  const comboMultiplier = Math.min(combo / 10, 3.0);\n  return baseScore[hitResult] * (1 + comboMultiplier);\n}\n```\n\n### 3. Arrow Movement\n```typescript\nfunction updateArrowPosition(arrow: Arrow, deltaTime: number, scrollSpeed: number): void {\n  arrow.position.z += scrollSpeed * deltaTime;\n  if (arrow.position.z > HIT_ZONE_POSITION + MISS_THRESHOLD) {\n    arrow.missed = true;\n  }\n}\n```\n\n## Dependencies to Include\n\n### Core Dependencies\n```json\n{\n  \"react\": \"^18.2.0\",\n  \"react-dom\": \"^18.2.0\",\n  \"three\": \"^0.150.0\",\n  \"@react-three/fiber\": \"^8.10.0\",\n  \"@react-three/drei\": \"^9.50.0\",\n  \"howler\": \"^2.2.3\",\n  \"zustand\": \"^4.3.0\"\n}\n```\n\n### Development Dependencies\n```json\n{\n  \"typescript\": \"^4.9.0\",\n  \"@types/react\": \"^18.0.0\",\n  \"@types/three\": \"^0.150.0\",\n  \"vite\": \"^4.0.0\",\n  \"@vitejs/plugin-react\": \"^3.0.0\"\n}\n```\n\n## Common Patterns and Best Practices\n\n### 1. Game Loop Implementation\n- Use `useFrame` from React Three Fiber for 3D updates\n- Separate game logic from rendering\n- Implement fixed timestep for consistent gameplay\n- Handle pause/resume states properly\n\n### 2. Audio Synchronization\n- Load audio files as ArrayBuffers\n- Use Web Audio API for precise timing\n- Implement audio offset calibration\n- Handle audio loading errors gracefully\n\n### 3. Input Handling\n- Use event listeners for keyboard input\n- Implement key repeat prevention\n- Support custom key bindings\n- Handle multiple simultaneous inputs\n\n### 4. Memory Management\n- Pool arrow objects to reduce allocations\n- Clean up audio contexts properly\n- Remove event listeners on component unmount\n- Dispose of ThreeJS objects when no longer needed\n\n## Debugging and Development Tips\n\n### Performance Monitoring\n- Use React DevTools Profiler\n- Monitor ThreeJS render calls\n- Track audio latency and timing accuracy\n- Implement FPS counter for performance monitoring\n\n### Common Issues to Watch For\n- Audio desynchronization over time\n- Input lag on different devices\n- Memory leaks from audio contexts\n- ThreeJS performance bottlenecks\n- Browser compatibility issues with Web Audio API\n\n## Game Design Considerations\n\n### Accessibility\n- Colorblind-friendly arrow colors\n- Adjustable visual contrast\n- Keyboard navigation support\n- Audio cues for visual elements\n\n### User Experience\n- Smooth difficulty progression\n- Clear visual feedback for all actions\n- Responsive menu navigation\n- Comprehensive settings options\n- Progress saving and statistics tracking\n\nRemember to focus on creating a smooth, responsive gameplay experience with precise timing and engaging visual effects. The combination of React's component system and ThreeJS's 3D capabilities should create an immersive rhythm game experience.",
+                "range": {
+                  "startLineNumber": 1,
+                  "startColumn": 1,
+                  "endLineNumber": 1,
+                  "endColumn": 1
+                }
+              }
+            ],
+            []
+          ],
+          "done": true
+        },
+        {
+          "value": "I've created comprehensive Copilot instructions for building a Dance Dance Revolution (DDR) style game using ThreeJS and React. The instructions include:\n\n## Key Sections:\n\n1. **Project Overview** - Defines the \"Tuki-Tuki\" DDR-style rhythm game\n2. **Tech Stack** - React 18+, ThreeJS, React Three Fiber, Web Audio API, TypeScript\n3. **Core Game Components** - Game engine, 3D scene components, and UI components\n4. **Key Features** - Core gameplay mechanics, audio integration, and visual features\n5. **File Structure Guidelines** - Organized folder structure for the project\n6. **Development Guidelines** - Performance optimization, timing precision, and code quality\n7. **Key Algorithms** - Sample implementations for hit detection, scoring, and arrow movement\n8. **Dependencies** - Specific packages and versions to use\n9. **Common Patterns** - Best practices for game loops, audio sync, input handling, and memory management\n10. **Debugging Tips** - Performance monitoring and common issues to watch for\n11. **Game Design Considerations** - Accessibility and user experience guidelines\n\nThe instructions provide specific code examples, timing constants, and architectural patterns that Copilot can use to generate accurate, game-specific code. This will help ensure consistent development practices and proper implementation of the complex timing and 3D rendering systems required for a DDR-style game.\n\nThe instructions emphasize the critical aspects of rhythm games like precise timing, audio synchronization, and smooth visual feedback, while providing practical guidance for using React and ThreeJS together effectively.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/Users/rais/Desktop/tuki-tuki/",
+            "scheme": "file"
+          }
+        }
+      ],
+      "responseId": "response_c48d6bb9-cea5-40ce-953c-37718216eb9e",
+      "result": {
+        "timings": {
+          "firstProgress": 2435,
+          "totalElapsed": 109641
+        },
+        "metadata": {
+          "codeBlocks": [],
+          "renderedUserMessage": [
+            {
+              "type": 1,
+              "text": "<attachments>\n<attachment id=\"file:copilot-instructions.md\">\nUser's current visible code:\nExcerpt from copilot-instructions.md, lines 1 to 1:\n```instructions\n\n```\n</attachment>\n\n</attachments>\n<context>\nThe current date is June 29, 2025.\n</context>\n<editorContext>\nThe user's current file is /Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md. \n</editorContext>\n<reminder>\nWhen using the insert_edit_into_file tool, avoid repeating existing code, instead use a line comment with \\`...existing code...\\` to represent regions of unchanged code.\nWhen using the replace_string_in_file tool, include 3-5 lines of unchanged code before and after the string you want to replace, to make it unambiguous which part of the file should be edited.\n</reminder>\n<userRequest>\nCreate copilot instructions to be used for the creation of a Dance Dance Revolution (DDR) type of game using ThreeJS and React\n</userRequest>\n"
+            },
+            {
+              "type": 3,
+              "cacheType": "ephemeral"
+            }
+          ],
+          "renderedGlobalContext": [
+            {
+              "type": 1,
+              "text": "<environment_info>\nThe user's current OS is: macOS\nThe user's default shell is: \"zsh\". When you generate terminal commands, please generate them correctly for this shell.\n</environment_info>\n<workspace_info>\nI am working in a workspace with the following folders:\n- /Users/rais/Desktop/tuki-tuki \nI am working in a workspace that has the following structure:\n```\nLICENSE\nREADME.md\n```\nThis is the state of the context at this point in the conversation. The view of the workspace structure may be truncated. You can use tools to collect more context if needed.\n</workspace_info>\n"
+            },
+            {
+              "type": 3,
+              "cacheType": "ephemeral"
+            }
+          ],
+          "toolCallRounds": [
+            {
+              "response": "I'll create comprehensive Copilot instructions for building a Dance Dance Revolution (DDR) type game using ThreeJS and React. Let me first read the current content of the copilot instructions file and then create detailed instructions. ",
+              "toolCalls": [
+                {
+                  "name": "read_file",
+                  "arguments": "{\"filePath\": \"/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md\", \"startLineNumber\": 1, \"endLineNumber\": 50}",
+                  "id": "toolu_01Y48QxGxkH6F5SY2MppwHcT__vscode-1751215350487"
+                }
+              ],
+              "toolInputRetry": 0,
+              "id": "54bd9b8e-0e9a-4d61-bc09-b5eafeda2244"
+            },
+            {
+              "response": "Now I'll create comprehensive Copilot instructions for building a DDR-style game using ThreeJS and React: ",
+              "toolCalls": [
+                {
+                  "name": "replace_string_in_file",
+                  "arguments": "{\"filePath\": \"/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md\", \"oldString\": \"instructions\\n\", \"newString\": \"# Copilot Instructions for DDR Game Development\\n\\n## Project Overview\\nYou are helping to build a Dance Dance Revolution (DDR) style rhythm game called \\\"Tuki-Tuki\\\" using React and ThreeJS. This is a web-based rhythm game where players step on arrow keys in time with music.\\n\\n## Tech Stack\\n- **Frontend Framework**: React 18+ with TypeScript\\n- **3D Graphics**: ThreeJS (Three.js) with React Three Fiber (@react-three/fiber)\\n- **Audio**: Web Audio API or Howler.js for precise audio timing\\n- **Styling**: CSS Modules or Styled Components for component styling\\n- **State Management**: React Context API or Zustand for game state\\n- **Build Tool**: Vite for development and building\\n- **Input Handling**: Keyboard events for arrow key detection\\n\\n## Core Game Components\\n\\n### 1. Game Engine Architecture\\n- **GameEngine**: Core game loop with requestAnimationFrame\\n- **AudioManager**: Handles music playback and timing synchronization\\n- **ScoreManager**: Tracks player performance and combo system\\n- **InputManager**: Handles keyboard input with precise timing\\n- **BeatMapLoader**: Loads and parses song charts/beatmaps\\n\\n### 2. 3D Scene Components (ThreeJS)\\n- **GameStage**: Main 3D scene container\\n- **ArrowLane**: 3D lanes where arrows travel (4 lanes: left, down, up, right)\\n- **FallingArrows**: 3D arrow objects that move towards the player\\n- **HitZone**: Target area where players must hit arrows\\n- **ParticleEffects**: Visual feedback for successful hits\\n- **Background**: Animated 3D background elements\\n\\n### 3. UI Components (React)\\n- **GameScreen**: Main gameplay interface\\n- **ScoreDisplay**: Shows current score, combo, and accuracy\\n- **SongSelector**: Menu for choosing songs\\n- **SettingsPanel**: Game configuration (speed, difficulty, key bindings)\\n- **ResultsScreen**: Post-game statistics and scoring\\n\\n## Key Features to Implement\\n\\n### Core Gameplay\\n- **Arrow Patterns**: Different arrow combinations based on difficulty\\n- **Timing System**: Perfect/Great/Good/Miss hit detection with timing windows\\n- **Combo System**: Consecutive hits increase score multiplier\\n- **Difficulty Levels**: Beginner, Standard, Heavy, Challenge\\n- **Speed Modifiers**: Adjustable arrow scroll speed\\n\\n### Audio Integration\\n- **Beat Detection**: Sync arrow timing with music beats\\n- **Audio Offset**: User-adjustable audio synchronization\\n- **Sound Effects**: Hit sounds, miss sounds, menu sounds\\n- **Music Formats**: Support for MP3, OGG, WAV files\\n\\n### Visual Features\\n- **3D Arrow Models**: Colorful 3D arrows with materials and lighting\\n- **Lane Highlighting**: Visual feedback when arrows are in hit zone\\n- **Particle Systems**: Explosions, trails, and hit effects\\n- **Dynamic Lighting**: Responsive to music and gameplay\\n- **Smooth Animations**: Interpolated movement and transitions\\n\\n## File Structure Guidelines\\n\\n```\\nsrc/\\n├── components/\\n│   ├── game/\\n│   │   ├── GameEngine.tsx\\n│   │   ├── GameScreen.tsx\\n│   │   ├── ScoreDisplay.tsx\\n│   │   └── InputHandler.tsx\\n│   ├── three/\\n│   │   ├── GameStage.tsx\\n│   │   ├── ArrowLane.tsx\\n│   │   ├── FallingArrow.tsx\\n│   │   └── ParticleEffects.tsx\\n│   └── ui/\\n│       ├── SongSelector.tsx\\n│       ├── SettingsPanel.tsx\\n│       └── ResultsScreen.tsx\\n├── hooks/\\n│   ├── useGameEngine.ts\\n│   ├── useAudioManager.ts\\n│   └── useKeyboardInput.ts\\n├── managers/\\n│   ├── AudioManager.ts\\n│   ├── ScoreManager.ts\\n│   └── BeatMapLoader.ts\\n├── types/\\n│   ├── GameTypes.ts\\n│   ├── BeatMap.ts\\n│   └── Score.ts\\n├── assets/\\n│   ├── songs/\\n│   ├── models/\\n│   └── textures/\\n└── utils/\\n    ├── timing.ts\\n    ├── math.ts\\n    └── audio.ts\\n```\\n\\n## Development Guidelines\\n\\n### Performance Optimization\\n- Use `useMemo` and `useCallback` for expensive computations\\n- Implement object pooling for arrows to reduce garbage collection\\n- Optimize ThreeJS renders with `useFrame` from React Three Fiber\\n- Use `React.memo` for components that don't need frequent re-renders\\n- Implement frustum culling for off-screen arrows\\n\\n### Timing Precision\\n- Use `performance.now()` for high-precision timing\\n- Implement audio lookahead for consistent timing\\n- Account for display refresh rate and audio latency\\n- Use Web Audio API for sample-accurate timing\\n- Implement calibration system for user-specific timing offsets\\n\\n### Code Quality\\n- Use TypeScript for type safety\\n- Implement proper error handling for audio loading\\n- Use consistent naming conventions (camelCase for variables, PascalCase for components)\\n- Add comprehensive JSDoc comments for complex functions\\n- Follow React best practices (hooks, context, etc.)\\n\\n### Testing Considerations\\n- Unit tests for game logic (scoring, timing, input handling)\\n- Integration tests for audio synchronization\\n- Performance tests for 3D rendering\\n- User acceptance tests for gameplay feel\\n\\n## Key Algorithms to Implement\\n\\n### 1. Hit Detection\\n```typescript\\n// Timing window constants (in milliseconds)\\nconst PERFECT_WINDOW = 22;\\nconst GREAT_WINDOW = 64;\\nconst GOOD_WINDOW = 106;\\n\\nfunction evaluateHit(arrowTime: number, hitTime: number): HitResult {\\n  const timeDiff = Math.abs(hitTime - arrowTime);\\n  if (timeDiff <= PERFECT_WINDOW) return 'PERFECT';\\n  if (timeDiff <= GREAT_WINDOW) return 'GREAT';\\n  if (timeDiff <= GOOD_WINDOW) return 'GOOD';\\n  return 'MISS';\\n}\\n```\\n\\n### 2. Score Calculation\\n```typescript\\nfunction calculateScore(hitResult: HitResult, combo: number): number {\\n  const baseScore = {\\n    PERFECT: 100,\\n    GREAT: 80,\\n    GOOD: 60,\\n    MISS: 0\\n  };\\n  \\n  const comboMultiplier = Math.min(combo / 10, 3.0);\\n  return baseScore[hitResult] * (1 + comboMultiplier);\\n}\\n```\\n\\n### 3. Arrow Movement\\n```typescript\\nfunction updateArrowPosition(arrow: Arrow, deltaTime: number, scrollSpeed: number): void {\\n  arrow.position.z += scrollSpeed * deltaTime;\\n  if (arrow.position.z > HIT_ZONE_POSITION + MISS_THRESHOLD) {\\n    arrow.missed = true;\\n  }\\n}\\n```\\n\\n## Dependencies to Include\\n\\n### Core Dependencies\\n```json\\n{\\n  \\\"react\\\": \\\"^18.2.0\\\",\\n  \\\"react-dom\\\": \\\"^18.2.0\\\",\\n  \\\"three\\\": \\\"^0.150.0\\\",\\n  \\\"@react-three/fiber\\\": \\\"^8.10.0\\\",\\n  \\\"@react-three/drei\\\": \\\"^9.50.0\\\",\\n  \\\"howler\\\": \\\"^2.2.3\\\",\\n  \\\"zustand\\\": \\\"^4.3.0\\\"\\n}\\n```\\n\\n### Development Dependencies\\n```json\\n{\\n  \\\"typescript\\\": \\\"^4.9.0\\\",\\n  \\\"@types/react\\\": \\\"^18.0.0\\\",\\n  \\\"@types/three\\\": \\\"^0.150.0\\\",\\n  \\\"vite\\\": \\\"^4.0.0\\\",\\n  \\\"@vitejs/plugin-react\\\": \\\"^3.0.0\\\"\\n}\\n```\\n\\n## Common Patterns and Best Practices\\n\\n### 1. Game Loop Implementation\\n- Use `useFrame` from React Three Fiber for 3D updates\\n- Separate game logic from rendering\\n- Implement fixed timestep for consistent gameplay\\n- Handle pause/resume states properly\\n\\n### 2. Audio Synchronization\\n- Load audio files as ArrayBuffers\\n- Use Web Audio API for precise timing\\n- Implement audio offset calibration\\n- Handle audio loading errors gracefully\\n\\n### 3. Input Handling\\n- Use event listeners for keyboard input\\n- Implement key repeat prevention\\n- Support custom key bindings\\n- Handle multiple simultaneous inputs\\n\\n### 4. Memory Management\\n- Pool arrow objects to reduce allocations\\n- Clean up audio contexts properly\\n- Remove event listeners on component unmount\\n- Dispose of ThreeJS objects when no longer needed\\n\\n## Debugging and Development Tips\\n\\n### Performance Monitoring\\n- Use React DevTools Profiler\\n- Monitor ThreeJS render calls\\n- Track audio latency and timing accuracy\\n- Implement FPS counter for performance monitoring\\n\\n### Common Issues to Watch For\\n- Audio desynchronization over time\\n- Input lag on different devices\\n- Memory leaks from audio contexts\\n- ThreeJS performance bottlenecks\\n- Browser compatibility issues with Web Audio API\\n\\n## Game Design Considerations\\n\\n### Accessibility\\n- Colorblind-friendly arrow colors\\n- Adjustable visual contrast\\n- Keyboard navigation support\\n- Audio cues for visual elements\\n\\n### User Experience\\n- Smooth difficulty progression\\n- Clear visual feedback for all actions\\n- Responsive menu navigation\\n- Comprehensive settings options\\n- Progress saving and statistics tracking\\n\\nRemember to focus on creating a smooth, responsive gameplay experience with precise timing and engaging visual effects. The combination of React's component system and ThreeJS's 3D capabilities should create an immersive rhythm game experience.\"}",
+                  "id": "toolu_01Bo8EQAf22qF3HvVFoFL88A__vscode-1751215350488"
+                }
+              ],
+              "toolInputRetry": 0,
+              "id": "6a9946cb-8bb5-4360-8eb5-393299551b3b"
+            },
+            {
+              "response": "Let me insert the content into the empty file: ",
+              "toolCalls": [
+                {
+                  "name": "insert_edit_into_file",
+                  "arguments": "{\"filePath\": \"/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md\", \"explanation\": \"Adding comprehensive Copilot instructions for DDR game development\", \"code\": \"# Copilot Instructions for DDR Game Development\\n\\n## Project Overview\\nYou are helping to build a Dance Dance Revolution (DDR) style rhythm game called \\\"Tuki-Tuki\\\" using React and ThreeJS. This is a web-based rhythm game where players step on arrow keys in time with music.\\n\\n## Tech Stack\\n- **Frontend Framework**: React 18+ with TypeScript\\n- **3D Graphics**: ThreeJS (Three.js) with React Three Fiber (@react-three/fiber)\\n- **Audio**: Web Audio API or Howler.js for precise audio timing\\n- **Styling**: CSS Modules or Styled Components for component styling\\n- **State Management**: React Context API or Zustand for game state\\n- **Build Tool**: Vite for development and building\\n- **Input Handling**: Keyboard events for arrow key detection\\n\\n## Core Game Components\\n\\n### 1. Game Engine Architecture\\n- **GameEngine**: Core game loop with requestAnimationFrame\\n- **AudioManager**: Handles music playback and timing synchronization\\n- **ScoreManager**: Tracks player performance and combo system\\n- **InputManager**: Handles keyboard input with precise timing\\n- **BeatMapLoader**: Loads and parses song charts/beatmaps\\n\\n### 2. 3D Scene Components (ThreeJS)\\n- **GameStage**: Main 3D scene container\\n- **ArrowLane**: 3D lanes where arrows travel (4 lanes: left, down, up, right)\\n- **FallingArrows**: 3D arrow objects that move towards the player\\n- **HitZone**: Target area where players must hit arrows\\n- **ParticleEffects**: Visual feedback for successful hits\\n- **Background**: Animated 3D background elements\\n\\n### 3. UI Components (React)\\n- **GameScreen**: Main gameplay interface\\n- **ScoreDisplay**: Shows current score, combo, and accuracy\\n- **SongSelector**: Menu for choosing songs\\n- **SettingsPanel**: Game configuration (speed, difficulty, key bindings)\\n- **ResultsScreen**: Post-game statistics and scoring\\n\\n## Key Features to Implement\\n\\n### Core Gameplay\\n- **Arrow Patterns**: Different arrow combinations based on difficulty\\n- **Timing System**: Perfect/Great/Good/Miss hit detection with timing windows\\n- **Combo System**: Consecutive hits increase score multiplier\\n- **Difficulty Levels**: Beginner, Standard, Heavy, Challenge\\n- **Speed Modifiers**: Adjustable arrow scroll speed\\n\\n### Audio Integration\\n- **Beat Detection**: Sync arrow timing with music beats\\n- **Audio Offset**: User-adjustable audio synchronization\\n- **Sound Effects**: Hit sounds, miss sounds, menu sounds\\n- **Music Formats**: Support for MP3, OGG, WAV files\\n\\n### Visual Features\\n- **3D Arrow Models**: Colorful 3D arrows with materials and lighting\\n- **Lane Highlighting**: Visual feedback when arrows are in hit zone\\n- **Particle Systems**: Explosions, trails, and hit effects\\n- **Dynamic Lighting**: Responsive to music and gameplay\\n- **Smooth Animations**: Interpolated movement and transitions\\n\\n## File Structure Guidelines\\n\\n```\\nsrc/\\n├── components/\\n│   ├── game/\\n│   │   ├── GameEngine.tsx\\n│   │   ├── GameScreen.tsx\\n│   │   ├── ScoreDisplay.tsx\\n│   │   └── InputHandler.tsx\\n│   ├── three/\\n│   │   ├── GameStage.tsx\\n│   │   ├── ArrowLane.tsx\\n│   │   ├── FallingArrow.tsx\\n│   │   └── ParticleEffects.tsx\\n│   └── ui/\\n│       ├── SongSelector.tsx\\n│       ├── SettingsPanel.tsx\\n│       └── ResultsScreen.tsx\\n├── hooks/\\n│   ├── useGameEngine.ts\\n│   ├── useAudioManager.ts\\n│   └── useKeyboardInput.ts\\n├── managers/\\n│   ├── AudioManager.ts\\n│   ├── ScoreManager.ts\\n│   └── BeatMapLoader.ts\\n├── types/\\n│   ├── GameTypes.ts\\n│   ├── BeatMap.ts\\n│   └── Score.ts\\n├── assets/\\n│   ├── songs/\\n│   ├── models/\\n│   └── textures/\\n└── utils/\\n    ├── timing.ts\\n    ├── math.ts\\n    └── audio.ts\\n```\\n\\n## Development Guidelines\\n\\n### Performance Optimization\\n- Use `useMemo` and `useCallback` for expensive computations\\n- Implement object pooling for arrows to reduce garbage collection\\n- Optimize ThreeJS renders with `useFrame` from React Three Fiber\\n- Use `React.memo` for components that don't need frequent re-renders\\n- Implement frustum culling for off-screen arrows\\n\\n### Timing Precision\\n- Use `performance.now()` for high-precision timing\\n- Implement audio lookahead for consistent timing\\n- Account for display refresh rate and audio latency\\n- Use Web Audio API for sample-accurate timing\\n- Implement calibration system for user-specific timing offsets\\n\\n### Code Quality\\n- Use TypeScript for type safety\\n- Implement proper error handling for audio loading\\n- Use consistent naming conventions (camelCase for variables, PascalCase for components)\\n- Add comprehensive JSDoc comments for complex functions\\n- Follow React best practices (hooks, context, etc.)\\n\\n### Testing Considerations\\n- Unit tests for game logic (scoring, timing, input handling)\\n- Integration tests for audio synchronization\\n- Performance tests for 3D rendering\\n- User acceptance tests for gameplay feel\\n\\n## Key Algorithms to Implement\\n\\n### 1. Hit Detection\\n```typescript\\n// Timing window constants (in milliseconds)\\nconst PERFECT_WINDOW = 22;\\nconst GREAT_WINDOW = 64;\\nconst GOOD_WINDOW = 106;\\n\\nfunction evaluateHit(arrowTime: number, hitTime: number): HitResult {\\n  const timeDiff = Math.abs(hitTime - arrowTime);\\n  if (timeDiff <= PERFECT_WINDOW) return 'PERFECT';\\n  if (timeDiff <= GREAT_WINDOW) return 'GREAT';\\n  if (timeDiff <= GOOD_WINDOW) return 'GOOD';\\n  return 'MISS';\\n}\\n```\\n\\n### 2. Score Calculation\\n```typescript\\nfunction calculateScore(hitResult: HitResult, combo: number): number {\\n  const baseScore = {\\n    PERFECT: 100,\\n    GREAT: 80,\\n    GOOD: 60,\\n    MISS: 0\\n  };\\n  \\n  const comboMultiplier = Math.min(combo / 10, 3.0);\\n  return baseScore[hitResult] * (1 + comboMultiplier);\\n}\\n```\\n\\n### 3. Arrow Movement\\n```typescript\\nfunction updateArrowPosition(arrow: Arrow, deltaTime: number, scrollSpeed: number): void {\\n  arrow.position.z += scrollSpeed * deltaTime;\\n  if (arrow.position.z > HIT_ZONE_POSITION + MISS_THRESHOLD) {\\n    arrow.missed = true;\\n  }\\n}\\n```\\n\\n## Dependencies to Include\\n\\n### Core Dependencies\\n```json\\n{\\n  \\\"react\\\": \\\"^18.2.0\\\",\\n  \\\"react-dom\\\": \\\"^18.2.0\\\",\\n  \\\"three\\\": \\\"^0.150.0\\\",\\n  \\\"@react-three/fiber\\\": \\\"^8.10.0\\\",\\n  \\\"@react-three/drei\\\": \\\"^9.50.0\\\",\\n  \\\"howler\\\": \\\"^2.2.3\\\",\\n  \\\"zustand\\\": \\\"^4.3.0\\\"\\n}\\n```\\n\\n### Development Dependencies\\n```json\\n{\\n  \\\"typescript\\\": \\\"^4.9.0\\\",\\n  \\\"@types/react\\\": \\\"^18.0.0\\\",\\n  \\\"@types/three\\\": \\\"^0.150.0\\\",\\n  \\\"vite\\\": \\\"^4.0.0\\\",\\n  \\\"@vitejs/plugin-react\\\": \\\"^3.0.0\\\"\\n}\\n```\\n\\n## Common Patterns and Best Practices\\n\\n### 1. Game Loop Implementation\\n- Use `useFrame` from React Three Fiber for 3D updates\\n- Separate game logic from rendering\\n- Implement fixed timestep for consistent gameplay\\n- Handle pause/resume states properly\\n\\n### 2. Audio Synchronization\\n- Load audio files as ArrayBuffers\\n- Use Web Audio API for precise timing\\n- Implement audio offset calibration\\n- Handle audio loading errors gracefully\\n\\n### 3. Input Handling\\n- Use event listeners for keyboard input\\n- Implement key repeat prevention\\n- Support custom key bindings\\n- Handle multiple simultaneous inputs\\n\\n### 4. Memory Management\\n- Pool arrow objects to reduce allocations\\n- Clean up audio contexts properly\\n- Remove event listeners on component unmount\\n- Dispose of ThreeJS objects when no longer needed\\n\\n## Debugging and Development Tips\\n\\n### Performance Monitoring\\n- Use React DevTools Profiler\\n- Monitor ThreeJS render calls\\n- Track audio latency and timing accuracy\\n- Implement FPS counter for performance monitoring\\n\\n### Common Issues to Watch For\\n- Audio desynchronization over time\\n- Input lag on different devices\\n- Memory leaks from audio contexts\\n- ThreeJS performance bottlenecks\\n- Browser compatibility issues with Web Audio API\\n\\n## Game Design Considerations\\n\\n### Accessibility\\n- Colorblind-friendly arrow colors\\n- Adjustable visual contrast\\n- Keyboard navigation support\\n- Audio cues for visual elements\\n\\n### User Experience\\n- Smooth difficulty progression\\n- Clear visual feedback for all actions\\n- Responsive menu navigation\\n- Comprehensive settings options\\n- Progress saving and statistics tracking\\n\\nRemember to focus on creating a smooth, responsive gameplay experience with precise timing and engaging visual effects. The combination of React's component system and ThreeJS's 3D capabilities should create an immersive rhythm game experience.\"}",
+                  "id": "toolu_01Xz9jCauxo3657TsMhfYxfa__vscode-1751215350489"
+                }
+              ],
+              "toolInputRetry": 0,
+              "id": "920cd113-b9b8-4cd9-b3b5-53e8284740ff"
+            },
+            {
+              "response": "I've created comprehensive Copilot instructions for building a Dance Dance Revolution (DDR) style game using ThreeJS and React. The instructions include:\n\n## Key Sections:\n\n1. **Project Overview** - Defines the \"Tuki-Tuki\" DDR-style rhythm game\n2. **Tech Stack** - React 18+, ThreeJS, React Three Fiber, Web Audio API, TypeScript\n3. **Core Game Components** - Game engine, 3D scene components, and UI components\n4. **Key Features** - Core gameplay mechanics, audio integration, and visual features\n5. **File Structure Guidelines** - Organized folder structure for the project\n6. **Development Guidelines** - Performance optimization, timing precision, and code quality\n7. **Key Algorithms** - Sample implementations for hit detection, scoring, and arrow movement\n8. **Dependencies** - Specific packages and versions to use\n9. **Common Patterns** - Best practices for game loops, audio sync, input handling, and memory management\n10. **Debugging Tips** - Performance monitoring and common issues to watch for\n11. **Game Design Considerations** - Accessibility and user experience guidelines\n\nThe instructions provide specific code examples, timing constants, and architectural patterns that Copilot can use to generate accurate, game-specific code. This will help ensure consistent development practices and proper implementation of the complex timing and 3D rendering systems required for a DDR-style game.\n\nThe instructions emphasize the critical aspects of rhythm games like precise timing, audio synchronization, and smooth visual feedback, while providing practical guidance for using React and ThreeJS together effectively.",
+              "toolCalls": [],
+              "toolInputRetry": 0,
+              "id": "c63a7be4-a4c4-4814-ab95-5b432877edf3"
+            }
+          ],
+          "toolCallResults": {
+            "toolu_01Y48QxGxkH6F5SY2MppwHcT__vscode-1751215350487": {
+              "$mid": 20,
+              "content": [
+                {
+                  "$mid": 22,
+                  "value": {
+                    "node": {
+                      "type": 1,
+                      "ctor": 2,
+                      "ctorName": "_J",
+                      "children": [
+                        {
+                          "type": 2,
+                          "priority": 9007199254740991,
+                          "text": "(The file `",
+                          "lineBreakBefore": false
+                        },
+                        {
+                          "type": 2,
+                          "priority": 9007199254740991,
+                          "text": "/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+                          "lineBreakBefore": false
+                        },
+                        {
+                          "type": 2,
+                          "priority": 9007199254740991,
+                          "text": "` exists, but is empty)",
+                          "lineBreakBefore": false
+                        }
+                      ],
+                      "props": {},
+                      "references": []
+                    }
+                  }
+                }
+              ]
+            },
+            "toolu_01Bo8EQAf22qF3HvVFoFL88A__vscode-1751215350488": {
+              "$mid": 20,
+              "content": [
+                {
+                  "$mid": 22,
+                  "value": {
+                    "node": {
+                      "type": 1,
+                      "ctor": 2,
+                      "ctorName": "Zm",
+                      "children": [
+                        {
+                          "type": 2,
+                          "priority": 9007199254740991,
+                          "text": "String replacement failed: Could not find matching text to replace. Try making your search string more specific or checking for whitespace/formatting differences.",
+                          "lineBreakBefore": false
+                        }
+                      ],
+                      "props": {},
+                      "references": []
+                    }
+                  }
+                }
+              ]
+            },
+            "toolu_01Xz9jCauxo3657TsMhfYxfa__vscode-1751215350489": {
+              "$mid": 20,
+              "content": [
+                {
+                  "$mid": 22,
+                  "value": {
+                    "node": {
+                      "type": 1,
+                      "ctor": 2,
+                      "ctorName": "Zm",
+                      "children": [
+                        {
+                          "type": 2,
+                          "priority": 9007199254740991,
+                          "text": "The following files were successfully edited:",
+                          "lineBreakBefore": false
+                        },
+                        {
+                          "type": 2,
+                          "priority": 9007199254740991,
+                          "text": "\n",
+                          "lineBreakBefore": false
+                        },
+                        {
+                          "type": 2,
+                          "priority": 9007199254740991,
+                          "text": "/Users/rais/Desktop/tuki-tuki/.github/copilot-instructions.md",
+                          "lineBreakBefore": false
+                        },
+                        {
+                          "type": 2,
+                          "priority": 9007199254740991,
+                          "text": "\n",
+                          "lineBreakBefore": false
+                        }
+                      ],
+                      "props": {},
+                      "references": []
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "modelMessageId": "d9b1d93f-ce60-4f84-ba92-b5efcbb7eb97",
+          "responseId": "3270f313-70df-4e3d-b6e9-9f98f97ec56e",
+          "sessionId": "91db228a-6f37-4614-9019-608679ac1207",
+          "agentId": "github.copilot.editsAgent"
+        }
+      },
+      "followups": [],
+      "isCanceled": false,
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.editsAgent",
+        "description": "Edit files in your workspace in agent mode",
+        "when": "config.chat.agent.enabled && !chatAgentModeDisallowed",
+        "metadata": {
+          "themeIcon": {
+            "id": "tools"
+          },
+          "hasFollowups": false,
+          "supportIssueReporting": false
+        },
+        "name": "agent",
+        "fullName": "GitHub Copilot",
+        "isDefault": true,
+        "locations": [
+          "panel"
+        ],
+        "modes": [
+          "agent"
+        ],
+        "slashCommands": [
+          {
+            "name": "list"
+          }
+        ],
+        "disambiguation": []
+      },
+      "contentReferences": [],
+      "codeCitations": [],
+      "timestamp": 1751223266963
+    }
+  ]
+}

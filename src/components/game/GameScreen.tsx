@@ -22,7 +22,8 @@ const GameScreen: React.FC = () => {
 
   // Set up camera position for optimal view
   useEffect(() => {
-    camera.position.set(0, 2, 8);
+    // Position camera to see bottom-to-top arrow movement better
+    camera.position.set(0, 3, 6);
     camera.lookAt(0, 0, 0);
   }, [camera]);
 

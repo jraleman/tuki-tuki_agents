@@ -1,11 +1,14 @@
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Plane, Text, Box } from '@react-three/drei';
+import { useGameStore } from '../../store/gameStore';
+import DancingCharacter from './DancingCharacter';
 import * as THREE from 'three';
 
 const GameStage: React.FC = () => {
   const stageRef = useRef<THREE.Group>(null);
   const backgroundRef = useRef<THREE.Mesh>(null);
+  const { gameState, isMultiplayer, lastHit } = useGameStore();
 
   // Animate the background
   useFrame((state) => {
@@ -87,6 +90,25 @@ const GameStage: React.FC = () => {
           ))}
         </group>
       </group>
+
+      {/* Dancing Characters */}
+      <DancingCharacter
+        player="player1"
+        position={[-3, 0, 2.5]}
+        isHit={lastHit.player1 && (Date.now() - lastHit.player1.time) < 500}
+        hitDirection={lastHit.player1?.direction}
+        currentBeat={Math.floor(gameState.currentTime / 500)} // Beat every 500ms
+      />
+      
+      {isMultiplayer && (
+        <DancingCharacter
+          player="player2"
+          position={[3, 0, 2.5]}
+          isHit={lastHit.player2 && (Date.now() - lastHit.player2.time) < 500}
+          hitDirection={lastHit.player2?.direction}
+          currentBeat={Math.floor(gameState.currentTime / 500)} // Beat every 500ms
+        />
+      )}
 
       {/* Lane Dividers */}
       {[-3, 3].map((groupX, groupIndex) => (

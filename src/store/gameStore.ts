@@ -55,6 +55,9 @@ interface GameStore {
   audioContext: AudioContext | null;
   currentAudio: HTMLAudioElement | null;
   
+  // Hit tracking for character animations
+  lastHit: { [key: string]: { direction: string; time: number } };
+  
   // Actions
   setGameState: (state: Partial<GameState>) => void;
   setCurrentScene: (scene: string) => void;
@@ -72,6 +75,7 @@ interface GameStore {
   addArrow: (arrow: Arrow) => void;
   updateArrows: (deltaTime: number) => void;
   removeArrow: (arrowId: string) => void;
+  generateArrows: (song: Song, isMultiplayer: boolean) => void;
   
   // Hit detection and scoring
   registerHit: (player: 'player1' | 'player2', direction: string, time: number) => HitResult;
@@ -85,6 +89,9 @@ interface GameStore {
   // Story mode
   toggleStory: () => void;
   toggleSettings: () => void;
+  
+  // Debug functions
+  testStartGame: () => void;
 }
 
 export const useGameStore = create<GameStore>((set, get) => ({
@@ -111,6 +118,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
   
   audioContext: null,
   currentAudio: null,
+  lastHit: {},
   
   // Actions
   setGameState: (state) => set((prev) => ({
@@ -132,22 +140,29 @@ export const useGameStore = create<GameStore>((set, get) => ({
   })),
   
   // Game actions
-  startGame: (song, isMultiplayer) => set((prev) => ({
-    gameState: {
-      ...prev.gameState,
-      isPlaying: true,
-      isPaused: false,
-      currentTime: 0,
-      currentSong: song,
-      gameMode: isMultiplayer ? 'multiplayer' : 'story',
-      score: { player1: 0, player2: 0 },
-      combo: { player1: 0, player2: 0 },
-      accuracy: { player1: 100, player2: 100 }
-    },
-    isMultiplayer,
-    arrows: [],
-    showStory: false
-  })),
+  startGame: (song, isMultiplayer) => {
+    console.log('Starting game with song:', song.title);
+    set((prev) => ({
+      gameState: {
+        ...prev.gameState,
+        isPlaying: true,
+        isPaused: false,
+        currentTime: 0,
+        currentSong: song,
+        gameMode: isMultiplayer ? 'multiplayer' : 'story',
+        score: { player1: 0, player2: 0 },
+        combo: { player1: 0, player2: 0 },
+        accuracy: { player1: 100, player2: 100 }
+      },
+      isMultiplayer,
+      arrows: [],
+      showStory: false
+    }));
+    
+    // Start generating arrows
+    console.log('Generating arrows...');
+    get().generateArrows(song, isMultiplayer);
+  },
   
   pauseGame: () => set((prev) => ({
     gameState: { ...prev.gameState, isPaused: true }
@@ -180,10 +195,12 @@ export const useGameStore = create<GameStore>((set, get) => ({
         position: [
           arrow.position[0],
           arrow.position[1],
+          // Arrows move from bottom (negative Z) to top (positive Z)
           arrow.position[2] + (settings.scrollSpeed * deltaTime * 0.01)
         ] as [number, number, number]
       }))
-      .filter(arrow => arrow.position[2] < 10 && !arrow.hit && !arrow.missed);
+      // Remove arrows that have passed the hit zone (positive Z beyond hit zone)
+      .filter(arrow => arrow.position[2] < 3 && !arrow.hit && !arrow.missed);
     
     return { arrows: updatedArrows };
   }),
@@ -191,6 +208,69 @@ export const useGameStore = create<GameStore>((set, get) => ({
   removeArrow: (arrowId) => set((prev) => ({
     arrows: prev.arrows.filter(arrow => arrow.id !== arrowId)
   })),
+  
+  generateArrows: (song, isMultiplayer) => {
+    const directions: Array<'left' | 'down' | 'up' | 'right'> = ['left', 'down', 'up', 'right'];
+    const players: Array<'player1' | 'player2'> = isMultiplayer ? ['player1', 'player2'] : ['player1'];
+    
+    // Generate a simple pattern for demonstration
+    const generatePattern = () => {
+      const pattern: Arrow[] = [];
+      const duration = song.duration * 1000 || 30000; // Convert to milliseconds
+      const beatInterval = (60 / (song.bpm || 120)) * 1000; // milliseconds per beat
+      
+      // Generate arrows every beat
+      for (let time = 0; time < duration; time += beatInterval) {
+        players.forEach(player => {
+          // Generate random arrows with high probability for testing
+          if (Math.random() > 0.2) { // 80% chance to generate an arrow
+            const direction = directions[Math.floor(Math.random() * directions.length)];
+            const arrow: Arrow = {
+              id: `${player}-${time}-${direction}-${Math.random()}`,
+              direction,
+              time,
+              lane: directions.indexOf(direction),
+              player,
+              position: [0, 0, -15], // Start further back for longer travel time
+              speed: 1,
+              hit: false,
+              missed: false
+            };
+            pattern.push(arrow);
+          }
+        });
+      }
+      
+      return pattern.sort((a, b) => a.time - b.time); // Sort by time
+    };
+    
+    const allArrows = generatePattern();
+    console.log(`Generated ${allArrows.length} arrows for song: ${song.title}`);
+    
+    // Start spawning arrows immediately and continuously
+    let arrowIndex = 0;
+    const spawnArrows = () => {
+      const { gameState } = get();
+      if (!gameState.isPlaying) return;
+      
+      const currentTime = gameState.currentTime;
+      const lookAheadTime = 4000; // 4 seconds ahead
+      
+      // Add arrows that should spawn now
+      while (arrowIndex < allArrows.length && allArrows[arrowIndex].time <= currentTime + lookAheadTime) {
+        const arrow = { ...allArrows[arrowIndex] };
+        get().addArrow(arrow);
+        arrowIndex++;
+      }
+      
+      if (gameState.isPlaying && arrowIndex < allArrows.length) {
+        setTimeout(spawnArrows, 100); // Check every 100ms
+      }
+    };
+    
+    // Start spawning immediately
+    setTimeout(spawnArrows, 100);
+  },
   
   // Hit detection and scoring
   registerHit: (player, direction, _time) => {
@@ -200,17 +280,19 @@ export const useGameStore = create<GameStore>((set, get) => ({
       arrow.direction === direction as any && 
       !arrow.hit && 
       !arrow.missed &&
-      Math.abs(arrow.position[2]) < 2 // Hit zone
+      // Hit zone is at Z=2, arrows move from negative to positive Z
+      arrow.position[2] >= 1 && arrow.position[2] <= 3
     );
     
     if (playerArrows.length === 0) return 'MISS';
     
-    // Find closest arrow
+    // Find closest arrow to the hit zone (Z=2)
+    const hitZoneZ = 2;
     const closestArrow = playerArrows.reduce((closest, current) => 
-      Math.abs(current.position[2]) < Math.abs(closest.position[2]) ? current : closest
+      Math.abs(current.position[2] - hitZoneZ) < Math.abs(closest.position[2] - hitZoneZ) ? current : closest
     );
     
-    const timeDiff = Math.abs(closestArrow.position[2]);
+    const timeDiff = Math.abs(closestArrow.position[2] - hitZoneZ);
     let result: HitResult = 'MISS';
     
     if (timeDiff <= 0.3) result = 'PERFECT';
@@ -218,11 +300,18 @@ export const useGameStore = create<GameStore>((set, get) => ({
     else if (timeDiff <= 1.0) result = 'GOOD';
     else result = 'MISS';
     
-    // Mark arrow as hit
+    // Mark arrow as hit and track hit for character animation
     set((prev) => ({
       arrows: prev.arrows.map(arrow => 
         arrow.id === closestArrow.id ? { ...arrow, hit: true } : arrow
-      )
+      ),
+      lastHit: {
+        ...prev.lastHit,
+        [player]: {
+          direction: direction,
+          time: Date.now()
+        }
+      }
     }));
     
     // Update score
@@ -297,5 +386,33 @@ export const useGameStore = create<GameStore>((set, get) => ({
   
   // UI actions
   toggleStory: () => set((prev) => ({ showStory: !prev.showStory })),
-  toggleSettings: () => set((prev) => ({ showSettings: !prev.showSettings }))
+  toggleSettings: () => set((prev) => ({ showSettings: !prev.showSettings })),
+  
+  // Debug functions
+  testStartGame: () => {
+    const testSong = {
+      id: 'test_song',
+      title: 'Test Tuki',
+      artist: 'Test Artist',
+      genre: 'Tuki Test',
+      bpm: 120,
+      duration: 30,
+      audioFile: '/music/test.mp3',
+      difficulties: {
+        standard: {
+          difficulty: 'standard' as const,
+          level: 1,
+          totalNotes: 20,
+          arrows: []
+        }
+      }
+    };
+    console.log('Test starting game...');
+    get().startGame(testSong, false);
+  }
 }));
+
+// Make store available globally for debugging
+if (typeof window !== 'undefined') {
+  (window as any).gameStore = useGameStore;
+}

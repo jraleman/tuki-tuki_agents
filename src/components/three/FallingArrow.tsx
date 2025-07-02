@@ -25,6 +25,7 @@ const FallingArrow: React.FC<FallingArrowProps> = ({ arrow, player }) => {
       case 'right': laneX = 1.5; break;
     }
     
+    // Arrows now start from bottom and move up
     return [baseX + laneX, 0, arrow.position[2]];
   };
 

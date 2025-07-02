@@ -28,8 +28,8 @@ const ArrowLane: React.FC<ArrowLaneProps> = ({ direction, player, position, colo
 
   return (
     <group ref={laneRef} position={position}>
-      {/* Lane Track */}
-      <Box args={[0.9, 0.05, 20]} position={[0, -0.1, 0]}>
+      {/* Lane Track - Extended for bottom-to-top movement */}
+      <Box args={[0.9, 0.05, 30]} position={[0, -0.1, -5]}>
         <meshLambertMaterial 
           color={color}
           transparent
@@ -39,15 +39,15 @@ const ArrowLane: React.FC<ArrowLaneProps> = ({ direction, player, position, colo
         />
       </Box>
 
-      {/* Lane Walls */}
-      <Box args={[0.05, 1, 20]} position={[-0.45, 0.4, 0]}>
+      {/* Lane Walls - Extended */}
+      <Box args={[0.05, 1, 30]} position={[-0.45, 0.4, -5]}>
         <meshLambertMaterial 
           color={color}
           transparent
           opacity={0.2}
         />
       </Box>
-      <Box args={[0.05, 1, 20]} position={[0.45, 0.4, 0]}>
+      <Box args={[0.05, 1, 30]} position={[0.45, 0.4, -5]}>
         <meshLambertMaterial 
           color={color}
           transparent
@@ -80,12 +80,12 @@ const ArrowLane: React.FC<ArrowLaneProps> = ({ direction, player, position, colo
         />
       </mesh>
 
-      {/* Lane Grid Lines */}
-      {Array.from({ length: 10 }).map((_, i) => (
+      {/* Lane Grid Lines - Extended for bottom-to-top */}
+      {Array.from({ length: 15 }).map((_, i) => (
         <Box
           key={i}
           args={[0.8, 0.01, 0.05]}
-          position={[0, 0, i * 2 - 10]}
+          position={[0, 0, i * 2 - 15]}
         >
           <meshBasicMaterial 
             color={color}
@@ -98,10 +98,10 @@ const ArrowLane: React.FC<ArrowLaneProps> = ({ direction, player, position, colo
       {/* Venezuelan-inspired lane decorations */}
       {player === 'player1' && (
         <>
-          {/* Yellow accent (Venezuelan flag) */}
+          {/* Yellow accent - Extended */}
           <Box
-            args={[0.1, 0.1, 20]}
-            position={[-0.3, 0.2, 0]}
+            args={[0.1, 0.1, 30]}
+            position={[-0.3, 0.2, -5]}
           >
             <meshBasicMaterial 
               color="#FCDD09"
@@ -114,10 +114,10 @@ const ArrowLane: React.FC<ArrowLaneProps> = ({ direction, player, position, colo
 
       {player === 'player2' && (
         <>
-          {/* Blue accent (Venezuelan flag) */}
+          {/* Blue accent - Extended */}
           <Box
-            args={[0.1, 0.1, 20]}
-            position={[0.3, 0.2, 0]}
+            args={[0.1, 0.1, 30]}
+            position={[0.3, 0.2, -5]}
           >
             <meshBasicMaterial 
               color="#00247D"

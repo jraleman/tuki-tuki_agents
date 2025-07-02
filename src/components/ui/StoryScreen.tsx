@@ -13,7 +13,8 @@ const StoryScreen: React.FC<StoryScreenProps> = ({ scene }) => {
     setMultiplayer, 
     toggleStory, 
     toggleSettings,
-    playAudio 
+    playAudio,
+    startGame
   } = useGameStore();
   
   const [currentDialogueIndex, setCurrentDialogueIndex] = useState(0);
@@ -247,26 +248,67 @@ const StoryScreen: React.FC<StoryScreenProps> = ({ scene }) => {
         </div>
       </motion.div>
 
-      {/* Skip button */}
-      <motion.button
-        className="skip-button"
-        style={{
-          position: 'absolute',
-          top: '20px',
-          right: '20px',
-          background: 'rgba(0, 0, 0, 0.5)',
-          border: '1px solid white',
-          color: 'white',
-          padding: '10px 20px',
-          borderRadius: '20px',
-          cursor: 'pointer'
-        }}
-        onClick={toggleStory}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        Skip Story
-      </motion.button>
+      {/* Skip button and Game Start */}
+      <div style={{
+        position: 'absolute',
+        top: '20px',
+        right: '20px',
+        display: 'flex',
+        gap: '10px'
+      }}>
+        <motion.button
+          className="start-game-button"
+          style={{
+            background: 'rgba(255, 107, 107, 0.8)',
+            border: '1px solid #FF6B6B',
+            color: 'white',
+            padding: '10px 20px',
+            borderRadius: '20px',
+            cursor: 'pointer'
+          }}
+          onClick={() => {
+            const testSong = {
+              id: 'test_song',
+              title: 'Test Tuki',
+              artist: 'Test Artist',
+              genre: 'Tuki Test',
+              bpm: 120,
+              duration: 30,
+              audioFile: '/music/test.mp3',
+              difficulties: {
+                standard: {
+                  difficulty: 'standard' as const,
+                  level: 1,
+                  totalNotes: 20,
+                  arrows: []
+                }
+              }
+            };
+            startGame(testSong, false);
+          }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          🎮 Start Game
+        </motion.button>
+        
+        <motion.button
+          className="skip-button"
+          style={{
+            background: 'rgba(0, 0, 0, 0.5)',
+            border: '1px solid white',
+            color: 'white',
+            padding: '10px 20px',
+            borderRadius: '20px',
+            cursor: 'pointer'
+          }}
+          onClick={toggleStory}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Skip Story
+        </motion.button>
+      </div>
 
       <style>{`
         .typing-cursor {

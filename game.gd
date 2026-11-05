@@ -18,6 +18,15 @@ static func manifest() -> GameManifest:
 	game.supports_cpu_opponent = false
 	game.uses_shell_round_rules = false
 	game.characters = Data.CHARACTERS.duplicate(true)
+	game.character_preview_scene_path = Options.ROOT + "ui/champion_preview.tscn"
+	game.intro_scene_path = Options.ROOT + "intro.tscn"
+	game.achievements = Options.ACHIEVEMENTS
+	game.store_items = Options.STORE_ITEMS
+	game.store_slots = Options.STORE_SLOTS
+	game.store_currency = Options.STORE_CURRENCY
+	game.store_preview_scene_path = Options.ROOT + "ui/store_preview.tscn"
+	game.gallery_exhibits = Options.GALLERY_EXHIBITS
+	game.gallery_stage_scene_path = Options.ROOT + "ui/gallery_stage.tscn"
 	for song in Data.SONGS:
 		game.levels.append({
 			"id": song["id"], "title": song["title"],
@@ -49,6 +58,7 @@ static func manifest() -> GameManifest:
 			+ "direction on the beat. Hits grow your combo; missed notes and wrong "
 			+ "presses break it. The song, not a lives pool, ends the round. "
 			+ "The briefing includes Story, Culture, champion biographies and Practice. "
+			+ "Finished songs earn Beat Tokens for cosmetic outfits and shoes. "
 			+ "All music is synthesized; no external song downloads are required."
 		),
 		"instructions_versus_summary": (
@@ -57,6 +67,8 @@ static func manifest() -> GameManifest:
 		),
 		"instructions_player_one_controls": "Left / down / up / right; on-screen pads also work.",
 		"instructions_player_two_controls": "Your own left / down / up / right.",
+		"store_intro": "Finish songs to earn Beat Tokens. Dress P1 and P2 independently; "
+			+ "outfits and shoes never change timing or scoring.",
 	}
 	var theme := GameTheme.new()
 	theme.logo_texture_path = Options.ROOT + "assets/game-icon.svg"

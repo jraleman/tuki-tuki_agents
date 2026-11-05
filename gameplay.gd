@@ -20,6 +20,7 @@ var _sfx_enabled := true
 var _background_enabled := true
 var _song_time_ms := -Sound.LEAD_IN * 1000.0
 var _completed := false
+var _reward_claimed := false
 var _audio: Sound
 var _stage: Stage
 var _briefing: Briefing
@@ -78,6 +79,7 @@ func _build_playfield() -> void:
 	_stage_container.add_child(_stage_viewport)
 	_stage = Stage.new()
 	_stage_viewport.add_child(_stage)
+	Store.equipped_changed.connect(_on_cosmetic_changed)
 	_audio = Sound.new()
 	add_child(_audio)
 	_briefing = Briefing.new()
@@ -109,6 +111,7 @@ func _reset_round_state() -> void:
 	_briefing.hide()
 	_touches.clear()
 	_completed = false
+	_reward_claimed = false
 	_last_count = -1
 	_song_time_ms = -Sound.LEAD_IN * 1000.0 - _offset_ms
 	_state.configure(Chart.generate(_song, _difficulty), float(_song["duration"]),
@@ -117,6 +120,7 @@ func _reset_round_state() -> void:
 	for player in _active_player_indices():
 		characters.append(GameSession.character_for_player(player))
 	_stage.configure(characters, float(_song["bpm"]))
+	_apply_cosmetics()
 	_apply_stage_preferences()
 	_pads_root.show()
 	for player in 2:
@@ -313,6 +317,45 @@ func _round_highlight_summary() -> String:
 		_best_streaks.max(), "Local Battle" if not GameSession.is_single_player()
 		else ("Story" if _mode == 0 else "Practice"), _song["genre"],
 	]
+
+
+## Only a completed song earns currency, once, through the shared wallet.
+func _round_points_earned(player_one_total: int, player_two_total: int) -> int:
+	if not _completed or _reward_claimed:
+		return -1
+	_reward_claimed = true
+	return super(player_one_total, player_two_total)
+
+
+func _award_round_achievements(_player_one_total: int, _player_two_total: int) -> void:
+	if not _completed:
+		return
+	_unlock_round_achievement(Options.FIRST_SONG)
+	for player in _state.players.size():
+		var stats := _state.stats(player)
+		if int(stats["streak"]) >= 25:
+			_unlock_round_achievement(Options.FLOW_COMBO)
+		if float(stats["accuracy"]) >= 90.0:
+			_unlock_round_achievement(Options.PRECISION)
+	if not GameSession.is_single_player() and _state.players.size() == 2 \
+			and int(_state.stats(0)["hits"]) > 0 and int(_state.stats(1)["hits"]) > 0:
+		_unlock_round_achievement(Options.LOCAL_BATTLE)
+
+
+func _on_cosmetic_changed(id: String, _slot: String, _item: String) -> void:
+	if id == game_id():
+		_apply_cosmetics()
+
+
+func _apply_cosmetics() -> void:
+	if _stage == null:
+		return
+	var outfits: Array[Dictionary] = []
+	var shoes: Array[Dictionary] = []
+	for player in _active_player_indices():
+		outfits.append(Store.equipped_item(game_id(), Options.OUTFIT_SLOTS[player]))
+		shoes.append(Store.equipped_item(game_id(), Options.SHOE_SLOTS[player]))
+	_stage.set_cosmetics(outfits, shoes)
 
 
 ## Hold playback explicitly as the framework pauses the rest of the scene tree.

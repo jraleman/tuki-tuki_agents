@@ -30,6 +30,24 @@ champion biographies. Both local players receive the same deterministic chart.
 Songs end at their declared length, then use the shared results, detailed
 statistics, share card, and replay screens.
 
+Standalone launches now follow the studio sting with a **skippable 3D rhythm
+demonstration**, including on-screen text and original synthesized audio.
+Collection launches retain the shared studio intro. Shared setup previews every
+champion with the same original rig used in play.
+
+**Store** sells three outfits and three pairs of shoes alongside two free
+defaults. P1/P2 have independent outfit and shoe slots; one purchase can equip
+both players. A completed song pays `round(best human score × 0.002) + 5`
+**Beat Tokens**, capped at 180, once per completed run. Unfinished songs and the intro
+pay nothing. Equipment updates live, including from pause, without changing
+notes, timing, score or playback position. The shared `Store` owns all saves.
+
+**Gallery** freely displays the four fictional champions, actual arrow meshes,
+and championship venue with shared orbit/zoom controls. It records no progress;
+champions wear P1's current cosmetics. Completion, a 25-note combo, 90% weighted
+accuracy and a completed two-human battle earn shared achievements. All songs,
+champions and gallery entries remain available without progression gates.
+
 ## Controls and settings
 
 | Action | Player 1 | Player 2 |
@@ -83,8 +101,9 @@ only presentation, never timing windows or tempo.
 | `data\tuki_data.gd` | Five songs, four champions, story, styles, lore |
 | `rhythm\` | Seeded charts and node-free judgement/scoring |
 | `audio\` | Finite synthesized PCM and pause-safe audible clock |
-| `world\` | Original Compatibility-renderer meshes, pooled arrows/effects |
-| `ui\` | Responsive, scrolling story/song briefing |
+| `world\` | Shared original champion/venue meshes and pooled arrows/effects |
+| `ui\` | Scrolling briefing and actual-model setup/store/gallery adapters |
+| `intro.gd`, `intro.tscn` | Skippable, unscored, audio-clock-driven 3D opening |
 | `assets\` | Game-owned logo |
 | `assets\video\`, `tools\` | Native solo/local walkthroughs and real-input recording driver |
 | `tests\` | Logic, audio, actual scene, and rendered layout checks |
@@ -114,7 +133,8 @@ pwsh tools\record_tutorials.ps1 -Godot godot -Games tuki_tuki
 ```
 
 The last suite requires a graphics window; it checks real pixels, target framing,
-and physical touch sizes at landscape, portrait, and ultrawide resolutions.
+feature models, intro layout, and physical touch sizes at landscape, portrait,
+and ultrawide resolutions.
 On Windows GUI-subsystem binaries, use `Start-Process -Wait -PassThru` and check
 `.ExitCode`, as above. The parent README lists the shared framework suites, which
 run with `--game=all`.

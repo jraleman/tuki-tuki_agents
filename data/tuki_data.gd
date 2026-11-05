@@ -210,3 +210,12 @@ static func song(id: String) -> Dictionary:
 			return entry.duplicate(true)
 	push_error("Tuki Tuki: unknown song '%s'." % id)
 	return {}
+
+
+## Setup, gameplay and the gallery share the same fictional champion data.
+static func character(id: String) -> Dictionary:
+	for entry in CHARACTERS:
+		if str(entry["id"]) == id:
+			return entry.duplicate(true)
+	push_error("Tuki Tuki: unknown champion '%s'." % id)
+	return {}

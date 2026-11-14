@@ -436,6 +436,10 @@ func _test_multiplayer() -> void:
 	var state: RefCounted = game.get("_state")
 	_expect(state.call("stats", 0)["hits"] == 1 and state.call("stats", 1)["hits"] == 1,
 		"Both humans must be able to hit the same chart note independently.")
+	if not bool(game.call("hud_controls_expanded")):
+		(game.get_node("%HudHelpButton") as Button).pressed.emit()
+	for frame in 4:
+		await process_frame
 	player.seek(Sound.LEAD_IN + 1.2)
 	var buttons: Array = game.get("_pad_buttons")
 	for seat in 2:

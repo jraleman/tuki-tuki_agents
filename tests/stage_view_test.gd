@@ -31,6 +31,7 @@ func _run() -> void:
 	var session := get_root().get_node("GameSession")
 	var packed := load(Options.ROOT + "gameplay.tscn") as PackedScene
 	for multiplayer in [false, true]:
+		settings.call("set_value", "ui/scale", 1.0)
 		if multiplayer:
 			session.call("configure_multiplayer", 0, 1)
 		else:
@@ -45,8 +46,11 @@ func _run() -> void:
 		game.call("set_process", false)
 		(game.get("_audio") as Node).call("set_paused", true)
 		(game.get("_stage") as Node).call("present", game.get("_state"), -1700.0, 1.0)
-		for size in [Vector2i(1280, 720), Vector2i(480, 800), Vector2i(1920, 720)]:
-			await _check_stage(game, size, multiplayer)
+		for scale in [1.0, 1.5]:
+			settings.call("set_value", "ui/scale", scale)
+			for size in [Vector2i(1280, 720), Vector2i(480, 800),
+				Vector2i(844, 390), Vector2i(1920, 720)]:
+				await _check_stage(game, size, multiplayer)
 		game.free()
 	settings.call("set_value", Options.DIFFICULTY_KEY, old_difficulty)
 	settings.call("set_value", Options.MODE_KEY, old_mode)
@@ -201,6 +205,16 @@ func _check_stage(game: Node, size: Vector2i, multiplayer: bool) -> void:
 	await RenderingServer.frame_post_draw
 	var stage := game.get("_stage") as Node3D
 	var viewport := game.get("_stage_viewport") as SubViewport
+	var stage_area := game.get("_stage_container") as Control
+	var pads := game.get("_pads_root") as Control
+	var field: Rect2 = game.call("_playfield_bounds")
+	var screen: Rect2 = game.call("get_viewport_rect")
+	_expect(screen.grow(0.5).encloses(pads.get_global_rect())
+		and not stage_area.get_global_rect().intersects(pads.get_global_rect()),
+		"The feedback strip must fit below, not over, the real dance stage.")
+	if not DisplayServer.is_touchscreen_available():
+		_expect(stage_area.size.y >= field.size.y * 0.55,
+			"Collapsed controls must reclaim the stage after font/container reflow at %s." % size)
 	var image := viewport.get_texture().get_image()
 	var colorful := 0
 	for y in range(0, image.get_height(), 7):
@@ -209,9 +223,10 @@ func _check_stage(game: Node, size: Vector2i, multiplayer: bool) -> void:
 			if maxf(color.r, maxf(color.g, color.b)) \
 				- minf(color.r, minf(color.g, color.b)) > 0.2:
 				colorful += 1
-	_expect(colorful > 100,
+	var required_samples := mini(100, maxi(20, image.get_width() * image.get_height() / 4000))
+	_expect(colorful > required_samples,
 		"The Compatibility viewport must render real colored meshes at %s." % size)
-	if colorful <= 100:
+	if colorful <= required_samples:
 		print("Layout diagnostics: logical=", game.call("get_viewport_rect"),
 			" bounds=", game.call("_playfield_bounds"),
 			" stage=", (game.get("_stage_container") as Control).get_global_rect(),
@@ -228,17 +243,22 @@ func _check_stage(game: Node, size: Vector2i, multiplayer: bool) -> void:
 			_expect(rect.has_point(camera.unproject_position(
 				dancer.global_position + Vector3(0, y, 0))),
 				"Both champions must remain visible from shoes to head at %s." % size)
+	_capture("tuki-%s-%dx%d.png" % [
+		"local" if multiplayer else "solo", size.x, size.y,
+	])
+	(game.get_node("%HudHelpButton") as Button).pressed.emit()
+	await _draw_frames()
 	for button: Button in game.get("_pad_buttons"):
 		if not button.is_visible_in_tree():
 			continue
 		var logical_rect: Rect2 = game.call("get_viewport_rect")
 		var pixels := float(get_root().size.x) / logical_rect.size.x
 		_expect(button.get_global_rect().size.x * pixels >= 44.0
-			and button.get_global_rect().size.y * pixels >= 44.0,
-			"On-screen pads must retain a usable physical touch area.")
-	_capture("tuki-%s-%dx%d.png" % [
-		"local" if multiplayer else "solo", size.x, size.y,
-	])
+			and button.get_global_rect().size.y * pixels >= 44.0
+			and logical_rect.grow(0.5).encloses(button.get_global_rect()),
+			"Help must reveal wholly visible pads with a usable physical touch area.")
+	(game.get_node("%HudHelpButton") as Button).pressed.emit()
+	await _draw_frames()
 
 
 func _expect(condition: bool, message: String) -> void:

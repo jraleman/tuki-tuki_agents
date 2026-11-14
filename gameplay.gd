@@ -26,7 +26,7 @@ var _stage: Stage
 var _briefing: Briefing
 var _stage_container: SubViewportContainer
 var _stage_viewport: SubViewport
-var _pads_root: HBoxContainer
+var _pads_root: BoxContainer
 var _pad_buttons: Array[Button] = []
 var _accuracy_labels: Array[Label] = []
 var _feedback_labels: Array[Label] = []
@@ -421,9 +421,10 @@ func _return_to_setup() -> void:
 
 
 func _build_pads() -> void:
-	_pads_root = HBoxContainer.new()
+	_pads_root = BoxContainer.new()
 	_pads_root.name = "RhythmPads"
 	_pads_root.add_theme_constant_override("separation", 40)
+	_pads_root.minimum_size_changed.connect(_layout_stage, CONNECT_DEFERRED)
 	_hud.get_node("Overlay").add_child(_pads_root)
 	for player in 2:
 		var column := VBoxContainer.new()
@@ -453,6 +454,7 @@ func _build_pads() -> void:
 			button.button_down.connect(_on_pad_pressed.bind(player, lane))
 			row.add_child(button)
 			_pad_buttons.append(button)
+		register_hud_controls(row, _layout_stage)
 	_configure_mode_ui()
 
 
@@ -465,9 +467,8 @@ func _on_pad_pressed(player: int, lane: int) -> void:
 func _refresh_player_readouts() -> void:
 	for player in _state.players.size():
 		var stats := _state.stats(player)
-		_accuracy_labels[player].text = "P%d / %s / %.1f%%" % [
-			player + 1, GameSession.character_for_player(player)["title"], stats["accuracy"],
-		]
+		_accuracy_labels[player].text = "P%d  %.1f%%" % [player + 1, stats["accuracy"]]
+		_accuracy_labels[player].tooltip_text = str(GameSession.character_for_player(player)["title"])
 
 
 func _set_capture_inset(bottom: float) -> void:
@@ -477,18 +478,10 @@ func _set_capture_inset(bottom: float) -> void:
 
 func _layout_stage() -> void:
 	var available := get_viewport_rect().size
-	var pixels := available.x / maxf(1.0, get_window().size.x)
+	var pixels := _shell_hud_unit
 	if not is_equal_approx(pixels, _ui_pixels):
 		_ui_pixels = pixels
-		for label: Label in [
-			_player_one_caption, _player_two_caption, _time_caption, _mode_title,
-		]:
-			label.add_theme_font_size_override("font_size", roundi(14 * pixels))
-		for label: Label in [_player_one_score, _player_two_score, _time_label]:
-			label.add_theme_font_size_override("font_size", roundi(32 * pixels))
-		for label: Label in [_player_one_streak, _player_two_streak, _hint]:
-			label.add_theme_font_size_override("font_size", roundi(15 * pixels))
-		_callout.add_theme_font_size_override("font_size", roundi(18 * pixels))
+		_pads_root.add_theme_constant_override("separation", roundi(10 * pixels))
 		for label in _accuracy_labels:
 			label.add_theme_font_size_override("font_size", roundi(15 * pixels))
 		for label in _feedback_labels:
@@ -496,15 +489,19 @@ func _layout_stage() -> void:
 			label.custom_minimum_size.y = 28 * pixels
 		for button in _pad_buttons:
 			button.add_theme_font_size_override("font_size", roundi(18 * pixels))
-			button.custom_minimum_size.y = 58 * pixels
+			button.custom_minimum_size = Vector2(44, 58) * pixels
 	var bounds := _playfield_bounds()
 	var top_bar := _player_one_card.get_parent() as Control
 	var top := maxf(bounds.position.y, top_bar.get_global_rect().end.y + 12 * pixels)
-	var bottom := minf(bounds.end.y, _hint.get_global_rect().position.y - 8 * pixels)
+	var bottom := bounds.end.y
+	if _hint.is_visible_in_tree():
+		bottom = minf(bottom, _hint.get_global_rect().position.y - 8 * pixels)
 	bottom = minf(bottom, available.y - _capture_inset)
 	bounds = Rect2(Vector2(bounds.position.x, top),
 		Vector2(bounds.size.x, maxf(1, bottom - top)))
-	var pads_height := 120 * pixels
+	_pads_root.vertical = bounds.size.x < 410 * pixels \
+		and (_pad_buttons[0].get_parent() as Control).visible
+	var pads_height := _pads_root.get_combined_minimum_size().y
 	_stage_container.position = bounds.position
 	_stage_container.size = Vector2(bounds.size.x, maxf(1.0, bounds.size.y - pads_height))
 	_pads_root.position = Vector2(bounds.position.x, bounds.end.y - pads_height)

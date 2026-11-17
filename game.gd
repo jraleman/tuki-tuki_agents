@@ -72,6 +72,7 @@ static func manifest() -> GameManifest:
 	}
 	var theme := GameTheme.new()
 	theme.logo_texture_path = Options.ROOT + "assets/game-icon.svg"
+	theme.cover_texture_path = Options.ROOT + "assets/cover.png"
 	theme.accent = Color("f6ce46")
 	theme.logo_color = Color("f6ce46")
 	theme.plaque_color = Color("183255")

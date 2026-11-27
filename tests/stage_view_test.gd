@@ -45,6 +45,22 @@ func _run() -> void:
 		await process_frame
 		game.call("set_process", false)
 		(game.get("_audio") as Node).call("set_paused", true)
+		if not multiplayer:
+			var stage := game.get("_stage") as Node3D
+			var arm := stage.get_node_or_null("RecordTonearm") as Node3D
+			_expect(arm != null, "The record marquee needs a tonearm.")
+			if arm != null:
+				var state: RefCounted = game.get("_state")
+				var effects: bool = stage.get("background_effects")
+				stage.set("background_effects", true)
+				stage.call("present", state, 0.0, 1.0)
+				var lead_in := arm.transform
+				stage.call("present", state, 2000.0, 1.0)
+				_expect(not arm.transform.is_equal_approx(lead_in), "The stylus must follow song progress.")
+				game.call("_set_reduced_motion_enabled", true)
+				_expect(arm.transform.is_equal_approx(lead_in), "Reduced motion must immediately park the stylus.")
+				game.call("_set_reduced_motion_enabled", false)
+				stage.set("background_effects", effects)
 		(game.get("_stage") as Node).call("present", game.get("_state"), -1700.0, 1.0)
 		for scale in [1.0, 1.5]:
 			settings.call("set_value", "ui/scale", scale)

@@ -18,12 +18,14 @@ var _arrow_mesh: ArrayMesh
 var _materials: Array[StandardMaterial3D] = []
 var _arrows: Array[MeshInstance3D] = []
 var _pads: Array[MeshInstance3D] = []
+var _strike_plates: Array[MeshInstance3D] = []
 var _dancers: Array[Rig] = []
 var _bursts: Array[Dictionary] = []
 var _pad_energy: Array[float] = []
 var _player_count := 1
 var _beat := 0.0
 var _active := false
+var _tonearm: Node3D
 
 
 func _ready() -> void:
@@ -33,7 +35,7 @@ func _ready() -> void:
 	_camera.fov = 50.0
 	_camera.current = true
 	add_child(_camera)
-	Models.build_venue(self)
+	_tonearm = Models.build_venue(self)
 	_arrow_mesh = Models.arrow_mesh()
 	for color in COLORS:
 		_materials.append(Models.material(color, 0.32))
@@ -44,6 +46,8 @@ func _ready() -> void:
 		add_child(arrow)
 		_arrows.append(arrow)
 	for player in 2:
+		_strike_plates.append(Models.box(self, Vector3(4.88, 0.06, 1.34),
+			Vector3.ZERO, Color("58647e")))
 		for lane in 4:
 			var pad := MeshInstance3D.new()
 			pad.mesh = _arrow_mesh
@@ -83,6 +87,9 @@ func configure(characters: Array[Dictionary], bpm: float) -> void:
 			rig.position.x = 4.0
 		_dancers.append(rig)
 	for player in 2:
+		var plate := _strike_plates[player]
+		plate.visible = player < _player_count
+		plate.position = Vector3(_lane_x(player, 0) + 1.8, -0.09, TARGET_Z)
 		for lane in 4:
 			var pad := _pads[player * 4 + lane]
 			pad.visible = player < _player_count
@@ -120,9 +127,12 @@ func present(state: State, time_ms: float, scroll_speed: float) -> void:
 	for index in range(used, _arrows.size()):
 		_arrows[index].hide()
 	if background_effects and not reduced_motion:
+		_tonearm.rotation.z = 0.55 * clampf(time_ms / maxf(1.0, state.duration_ms), 0, 1)
 		var phase := time_ms * 0.001 * _beat * TAU
 		for dancer in _dancers:
 			dancer.dance(phase)
+	else:
+		_tonearm.rotation.z = 0.0
 
 
 ## Static targets and judgement text remain even when decorative effects are off.
@@ -149,6 +159,7 @@ func feedback(player: int, lane: int, result: String) -> void:
 
 ## Accessibility changes must park effects immediately, not after a timer expires.
 func clear_effects() -> void:
+	_tonearm.rotation.z = 0.0
 	for index in _pad_energy.size():
 		_pad_energy[index] = 0.0
 		(_pads[index].material_override as StandardMaterial3D).emission_energy_multiplier = 0.1

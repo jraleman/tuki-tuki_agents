@@ -11,7 +11,7 @@ const Data = preload("res://games/tuki-tuki_agents/data/tuki_data.gd")
 static func design() -> Dictionary:
 	return {
 		"paper": Color("302353"), "ink": Color("fff0d0"), "accent": Color("ee6969"),
-		"motif": "confetti", "camera": Vector3(12, 8, -5),
+		"motif": "rhythm", "camera": Vector3(12, 8, -5),
 		"photo": Rect2(20, 195, 984, 610),
 		"lettering": [
 			{"text": "TUKI", "at": Vector2(55, 184), "size": 218, "color": Color("f5cf48")},
